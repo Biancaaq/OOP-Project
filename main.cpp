@@ -1,11 +1,57 @@
 #include <iostream>
-#include <array>
+#include "Utilizator.hpp"
+#include "Melodie.hpp"
+#include "Podcast.hpp"
+#include "Audiobook.hpp"
+
+using namespace std;
 
 int main() {
-    std::cout << "Hello, world!\n";
-    std::array<int, 100> v{};
-    int nr;
-    std::cout << "Introduceți nr: ";
+    Utilizator u("Bubu", "bubu@rock.com");
+
+    Melodie* m = new Melodie(210, "Still Alive", "Rock", 2023, u.getNume());
+    Podcast* p = new Podcast(1800, "Mind Architect", "Psihologie", 17, "Paul Olteanu", "Despre mindset");
+    Audiobook* a = new Audiobook(7200, "Micul Print", "Poveste", "Exupery", "Ion Caramitru", "Micul Print");
+
+
+    u.afiseazaContinutCreat();
+    cout << endl << endl;
+
+    u.adaugaContinut(m);
+    u.adaugaContinut(p);
+    u.adaugaContinut(a);
+
+
+    u.afiseazaIstoricAscultari();
+    cout << endl << endl;
+
+    u.asculta(m);
+    u.asculta(a);
+
+
+    u.afiseazaContinutCreat();
+    cout << endl << endl;;
+
+
+    u.afiseazaIstoricAscultari();
+    cout << endl << endl;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     /////////////////////////////////////////////////////////////////////////
     /// Observație: dacă aveți nevoie să citiți date de intrare de la tastatură,
     /// dați exemple de date de intrare folosind fișierul tastatura.txt
@@ -26,17 +72,7 @@ int main() {
     /// program care merg (și să le evitați pe cele care nu merg).
     ///
     /////////////////////////////////////////////////////////////////////////
-    std::cin >> nr;
-    /////////////////////////////////////////////////////////////////////////
-    for(int i = 0; i < nr; ++i) {
-        std::cout << "v[" << i << "] = ";
-        std::cin >> v[i];
-    }
-    std::cout << "\n\n";
-    std::cout << "Am citit de la tastatură " << nr << " elemente:\n";
-    for(int i = 0; i < nr; ++i) {
-        std::cout << "- " << v[i] << "\n";
-    }
+
     ///////////////////////////////////////////////////////////////////////////
     /// Pentru date citite din fișier, NU folosiți tastatura.txt. Creați-vă voi
     /// alt fișier propriu cu ce alt nume doriți.
