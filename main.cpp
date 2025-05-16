@@ -3,6 +3,7 @@
 #include "Melodie.hpp"
 #include "Podcast.hpp"
 #include "Audiobook.hpp"
+#include "Aplicatie.hpp"
 
 using namespace std;
 
@@ -63,6 +64,57 @@ int main() {
 
     cout << "Numar ascultari: " << istoric.size() << endl;
     cout << "Numar continut creat: " << publicat.size() << endl;
+
+    Aplicatie apl;
+
+    apl.inregistrareUtilizator("Ana", "ana@maria.com");
+    if (apl.autentificare("ana@maria.com")) {
+        Utilizator* u1 = apl.getUtilizatorAutentificat();
+
+        Melodie* m1 = new Melodie(100, "test", "Pop", 2020,"Ana");
+
+        u1->adaugaContinut(m1);
+
+        Podcast* p1 = new Podcast(3000, "Tech Talk", "Tehnologie", 1, "Ana", "Podcast despre AI");
+        u1->adaugaContinut(p1);
+
+        Audiobook* a1 = new Audiobook(7200, "1984", "Distopie", "George Orwell", "Ana", "1984");
+        u1->adaugaContinut(a1);
+
+        for (auto* mel : apl.getMelodiiGlobale()) {
+            mel->afiseazaInfo();
+        }
+
+        for (auto* pod : apl.getPodcasturiGlobale()) {
+            pod->afiseazaInfo();
+        }
+
+        for (auto* aud : apl.getAudiobookuriGlobale()) {
+            aud->afiseazaInfo();
+        }
+
+        cout << u1->getId();
+
+        apl.deconectare();
+    }
+
+    apl.inregistrareUtilizator("Ioana", "io@maria.com");
+    if (apl.autentificare("io@maria.com")) {
+        Utilizator* u2 = apl.getUtilizatorAutentificat();
+
+       cout << u2->getId();
+    }
+
+    apl.inregistrareUtilizator("Alex", "i@maria.com");
+    if (apl.autentificare("i@maria.com")) {
+        Utilizator* u3 = apl.getUtilizatorAutentificat();
+
+        cout << u3->getId();
+    }
+
+
+
+
 
 
 

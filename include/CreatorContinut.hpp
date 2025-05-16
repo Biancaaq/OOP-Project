@@ -16,8 +16,9 @@ class CreatorContinut : virtual public Profil {
     //destructor pur virtual; am scos cuvantul cheie virtual deoarece imi dadea warning ca este redundant
     ~CreatorContinut() override= 0;
 
-    void adaugaContinut(ContinutAudio* continut);
     const std::vector<ContinutAudio*>& getContinutCreat() const;
+
+    virtual void adaugaContinut(ContinutAudio* continut);
     void afiseazaContinutCreat() const;
 };
 

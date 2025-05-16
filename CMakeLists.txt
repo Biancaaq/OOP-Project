@@ -138,7 +138,9 @@ add_executable(${MAIN_EXECUTABLE_NAME} main.cpp ${SOURCES}
         include/ContinutAudio.hpp
         include/Melodie.hpp
         include/Podcast.hpp
-        include/Audiobook.hpp)
+        include/Audiobook.hpp
+        include/Playlist.hpp
+        include/Aplicatie.hpp)
 
 # NOTE: Add all defined targets (e.g. executables, libraries, etc. )
 # NOTE: RUN_SANITIZERS is optional, if it's not present it will default to true
