@@ -139,7 +139,6 @@ add_executable(${MAIN_EXECUTABLE_NAME} main.cpp ${SOURCES}
         include/Melodie.hpp
         include/Podcast.hpp
         include/Audiobook.hpp
-        include/Playlist.hpp
         include/Aplicatie.hpp)
 
 # NOTE: Add all defined targets (e.g. executables, libraries, etc. )
