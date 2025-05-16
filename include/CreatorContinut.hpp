@@ -13,9 +13,6 @@ class CreatorContinut : virtual public Profil {
     std::vector<ContinutAudio*> continutCreat;
 
     public:
-    //constructor
-    CreatorContinut(std::string nume = "", std::string email = "");
-
     //destructor pur virtual
     virtual ~CreatorContinut() = 0;
 

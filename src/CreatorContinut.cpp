@@ -5,8 +5,6 @@
 using namespace std;
 
 
-CreatorContinut::CreatorContinut(string nume, string email) : Profil(nume, email) {}
-
 CreatorContinut::~CreatorContinut() {}
 
 void CreatorContinut::adaugaContinut(ContinutAudio* continut) {

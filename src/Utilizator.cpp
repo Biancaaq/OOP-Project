@@ -5,7 +5,7 @@
 using namespace std;
 
 
-Utilizator::Utilizator(string nume, string email) : Profil(nume, email), CreatorContinut(nume, email), Ascultator(nume, email) {}
+Utilizator::Utilizator(string nume, string email) : Profil(nume, email), CreatorContinut(), Ascultator() {}
 
 Utilizator::~Utilizator() {
     for (auto* continut : continutCreat) {

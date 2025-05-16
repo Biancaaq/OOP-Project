@@ -13,9 +13,6 @@ class Ascultator : virtual public Profil {
     std::vector<ContinutAudio*> istoricAscultari;
 
     public:
-    //constructor
-    Ascultator(std::string nume, std::string email);
-
     //destructor pur virtual
     virtual ~Ascultator() = 0;
 

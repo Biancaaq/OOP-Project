@@ -5,8 +5,6 @@
 using namespace std;
 
 
-Ascultator::Ascultator(string nume, string email) : Profil(nume, email){}
-
 Ascultator::~Ascultator() {}
 
 void Ascultator::asculta(ContinutAudio* continut) {
