@@ -113,7 +113,10 @@ void Aplicatie::meniuPrincipal() {
 
                 if (autentificare(email)) {
                     cout << "Autentificare reusita." << endl;
-                    meniuUtilizator();
+
+                    while (utilizatorAutentificat != nullptr) {
+                        meniuUtilizator();
+                    }
                 }
 
                 else {
