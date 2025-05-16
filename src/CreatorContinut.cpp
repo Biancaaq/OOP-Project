@@ -25,7 +25,7 @@ void CreatorContinut::afiseazaContinutCreat() const {
     }
 
     else {
-        for (auto* c : continutCreat) {
+        for (const auto* c : continutCreat) {
             if (c) {
                 c->afiseazaInfo();
             }

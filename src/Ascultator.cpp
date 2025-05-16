@@ -25,7 +25,7 @@ void Ascultator::afiseazaIstoricAscultari() const {
     }
 
     else {
-        for (auto* c : istoricAscultari) {
+        for (const auto* c : istoricAscultari) {
             if (c) {
                 c->afiseazaInfo();
             }

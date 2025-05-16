@@ -9,10 +9,27 @@ using namespace std;
 int main() {
     Utilizator u("Bubu", "bubu@rock.com");
 
+    cout << u.getEmail() << endl;
+    cout << u.getNume() << endl;
+    cout << u.getId() << endl;
+
     Melodie* m = new Melodie(210, "Still Alive", "Rock", 2023, u.getNume());
     Podcast* p = new Podcast(1800, "Mind Architect", "Psihologie", 17, "Paul Olteanu", "Despre mindset");
     Audiobook* a = new Audiobook(7200, "Micul Print", "Poveste", "Exupery", "Ion Caramitru", "Micul Print");
 
+    cout << m->getTitlu() << endl;
+    cout << m->getNumeArtist() << endl;
+    cout << m->getAnLansare() << endl;
+    cout << m->getDurata() << endl;
+    cout << m->getGen() << endl;
+
+    cout << p->getDurata() << endl;
+    cout << p->getGazda() << endl;
+    cout << p->getDescriere() << endl;
+
+    cout << a->getAutor() << endl;
+    cout << a->getNarator() << endl;
+    cout << a->getTitluCarte() << endl;
 
     u.afiseazaContinutCreat();
     cout << endl << endl;
@@ -35,6 +52,13 @@ int main() {
 
     u.afiseazaIstoricAscultari();
     cout << endl << endl;
+
+    u.setNume("Bianca");
+    u.setEmail("Bianca@rock.com");
+    u.afiseazaProfil();
+
+    vector<ContinutAudio*> istoric = u.getIstoricAscultari();
+    vector<ContinutAudio*> publicat = u.getContinutCreat();
 
 
 
