@@ -1,9 +1,9 @@
 #ifndef APLICATIE_HPP
 #define APLICATIE_HPP
 
-#include <iostream>
 #include <vector>
 #include <string>
+#include <memory>
 #include "Utilizator.hpp"
 #include "Melodie.hpp"
 #include "Podcast.hpp"
@@ -11,7 +11,7 @@
 
 
 class Aplicatie {
-    std::vector<Utilizator> utilizatori;
+    std::vector<std::unique_ptr<Utilizator>> utilizatori;
     std::vector<Melodie*> melodiiGlobale;
     std::vector<Podcast*> podcasturiGlobale;
     std::vector<Audiobook*> audiobookuriGlobale;

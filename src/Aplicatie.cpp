@@ -19,18 +19,18 @@ Aplicatie::~Aplicatie() {
 }
 
 void Aplicatie::inregistrareUtilizator(const string& nume, const string& email) {
-    utilizatori.emplace_back(nume, email);
-    utilizatori.back().setAplicatie(this);
+    utilizatori.push_back(std::make_unique<Utilizator>(nume, email));
+    utilizatori.back()->setAplicatie(this);
 
     cout << "Utilizator creat cu succes." << endl;
 }
 
 bool Aplicatie::autentificare(const string& email) {
     for (auto& u : utilizatori) {
-        if (u.getEmail() == email) {
-            utilizatorAutentificat = &u;
+        if (u->getEmail() == email) {
+            utilizatorAutentificat = u.get();
 
-            cout << "Bine ai revenit, " << u.getNume() << "!" << endl;
+            cout << "Bine ai revenit, " << u->getNume() << "!" << endl;
 
             return true;
         }
