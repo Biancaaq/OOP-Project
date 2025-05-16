@@ -2,13 +2,9 @@
 #define UTILIZATOR_HPP
 
 #include <iostream>
-#include <vector>
 #include <string>
 #include "CreatorContinut.hpp"
 #include "Ascultator.hpp"
-#include "Melodie.hpp"
-#include "Audiobook.hpp"
-#include "Podcast.hpp"
 
 
 class Aplicatie;

@@ -1,7 +1,6 @@
 #ifndef Ascultator_HPP
 #define Ascultator_HPP
 
-#include <iostream>
 #include <vector>
 #include "Profil.hpp"
 

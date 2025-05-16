@@ -1,7 +1,6 @@
 #ifndef CREATORCONTINUT_HPP
 #define CREATORCONTINUT_HPP
 
-#include <iostream>
 #include <vector>
 #include "Profil.hpp"
 

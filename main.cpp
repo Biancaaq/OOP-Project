@@ -65,6 +65,10 @@ int main() {
     cout << "Numar ascultari: " << istoric.size() << endl;
     cout << "Numar continut creat: " << publicat.size() << endl;
 
+    delete m;
+    delete a;
+    delete p;
+
     Aplicatie apl;
 
     apl.inregistrareUtilizator("Ana", "ana@maria.com");
