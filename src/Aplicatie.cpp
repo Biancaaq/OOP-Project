@@ -43,7 +43,7 @@ bool Aplicatie::autentificare(const string& email) {
 
 void Aplicatie::deconectare() {
     utilizatorAutentificat = nullptr;
-    cout << "Te-ai deconectat." << endl;
+    cout << "Te-ai deconectat cu succes." << endl;
 }
 
 Utilizator* Aplicatie::getUtilizatorAutentificat() {
@@ -74,4 +74,108 @@ const vector<Podcast*>& Aplicatie::getPodcasturiGlobale() const {
 
 const vector<Audiobook*>& Aplicatie::getAudiobookuriGlobale() const {
     return audiobookuriGlobale;
+}
+
+void Aplicatie::meniuPrincipal() {
+    while (true) {
+        cout << "~~~ Meniu Principal ~~~" << endl;
+        cout << endl;
+        cout << endl;
+        cout << "1. Inregistrare" << endl;
+        cout << "2. Autentificare" << endl;
+        cout << "3. Iesire" << endl;
+        cout << endl;
+        cout << "Selectati o optiune: ";
+
+        int optiune;
+        cin >> optiune;
+        cin.ignore();
+
+        switch (optiune) {
+            case 1: {
+                string nume, email;
+                cout << "Nume: ";
+                getline(cin, nume);
+                cout << "Email: ";
+                getline(cin, email);
+                cout << endl;
+
+                inregistrareUtilizator(nume, email);
+
+                break;
+            }
+
+            case 2: {
+                string email;
+                cout << "Email: ";
+                getline(cin, email);
+                cout << endl;
+
+                if (autentificare(email)) {
+                    cout << "Autentificare reusita." << endl;
+                    meniuUtilizator();
+                }
+
+                else {
+                    cout << "Mai incearca!" << endl;
+                }
+
+                break;
+            }
+
+            case 3: {
+                cout << "La revedere!" << endl;
+
+                return;
+            }
+
+            default:
+                cout << "Optiune invalida. Incearca inca o data!" << endl;
+        }
+    }
+}
+
+void Aplicatie::meniuUtilizator() {
+    while (true) {
+        cout << "~~~ Meniu Utilizator ~~~" << endl;
+        cout << endl;
+        cout << endl;
+        cout << "Utilizator conectat: " << utilizatorAutentificat->getNume() << "Ce doresti sa faci?" << endl;
+        cout << endl;
+        cout << "1. Rasfoieste" << endl;
+        cout << "2. Continut personal" << endl;
+        cout << "3. Playlist-uri" << endl;
+        cout << "4. Deconectare" << endl;
+        cout << endl;
+        cout << "Selectati o optiune: ";
+
+        int optiune;
+        cin >> optiune;
+        cin.ignore();
+
+        switch (optiune) {
+            case 1: {
+                cout << "momentan nimic";
+                break;
+            }
+
+            case 2: {
+                cout << "momentan nimic";
+                break;
+            }
+
+            case 3: {
+                cout << "momentan nimic";
+                break;
+            }
+
+            case 4: {
+                deconectare();
+                return;
+            }
+
+            default:
+                cout << "Optiune invalida. Mai incearca inca o data!" << endl;
+        }
+    }
 }
