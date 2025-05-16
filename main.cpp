@@ -23,9 +23,10 @@ int main() {
     cout << m->getDurata() << endl;
     cout << m->getGen() << endl;
 
-    cout << p->getDurata() << endl;
+    cout << p->getEpisod() << endl;
     cout << p->getGazda() << endl;
     cout << p->getDescriere() << endl;
+
 
     cout << a->getAutor() << endl;
     cout << a->getNarator() << endl;
@@ -60,8 +61,8 @@ int main() {
     vector<ContinutAudio*> istoric = u.getIstoricAscultari();
     vector<ContinutAudio*> publicat = u.getContinutCreat();
 
-
-
+    cout << "Numar ascultari: " << istoric.size() << endl;
+    cout << "Numar continut creat: " << publicat.size() << endl;
 
 
 
