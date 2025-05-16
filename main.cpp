@@ -81,15 +81,15 @@ int main() {
         Audiobook* a1 = new Audiobook(7200, "1984", "Distopie", "George Orwell", "Ana", "1984");
         u1->adaugaContinut(a1);
 
-        for (auto* mel : apl.getMelodiiGlobale()) {
+        for (const auto* mel : apl.getMelodiiGlobale()) {
             mel->afiseazaInfo();
         }
 
-        for (auto* pod : apl.getPodcasturiGlobale()) {
+        for (const auto* pod : apl.getPodcasturiGlobale()) {
             pod->afiseazaInfo();
         }
 
-        for (auto* aud : apl.getAudiobookuriGlobale()) {
+        for (const auto* aud : apl.getAudiobookuriGlobale()) {
             aud->afiseazaInfo();
         }
 

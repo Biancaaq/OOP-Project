@@ -6,7 +6,6 @@
 #include <string>
 #include "CreatorContinut.hpp"
 #include "Ascultator.hpp"
-#include "Playlist.hpp"
 #include "Melodie.hpp"
 #include "Audiobook.hpp"
 #include "Podcast.hpp"
