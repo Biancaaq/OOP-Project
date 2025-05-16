@@ -13,12 +13,12 @@ class Podcast : public ContinutAudio {
 
     public:
     //constructor
-    Podcast(int durata = 0, std::string titlu = "", std::string gen = "", int episod = 0, std::string gazda = "", std::string descriere = "");
+    explicit Podcast(int durata = 0, const std::string& titlu = "", const std::string& gen = "", int episod = 0, const std::string& gazda = "", const std::string& descriere = "");
 
     //getteri
     int getEpisod() const;
-    std::string getGazda() const;
-    std::string getDescriere() const;
+    const std::string& getGazda() const;
+    const std::string& getDescriere() const;
 
     void afiseazaInfo() const override;
 };

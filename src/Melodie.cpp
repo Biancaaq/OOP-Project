@@ -4,13 +4,13 @@
 using namespace std;
 
 
-Melodie::Melodie(int durata, string titlu, string gen, int anLansare, string numeArtist) : ContinutAudio(durata, titlu, gen), anLansare(anLansare), numeArtist(numeArtist) {}
+Melodie::Melodie(int durata, const string& titlu, const string& gen, int anLansare, const string& numeArtist) : ContinutAudio(durata, titlu, gen), anLansare(anLansare), numeArtist(numeArtist) {}
 
 int Melodie::getAnLansare() const {
     return anLansare;
 }
 
-string Melodie::getNumeArtist() const {
+const string& Melodie::getNumeArtist() const {
     return numeArtist;
 }
 

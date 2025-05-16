@@ -13,11 +13,11 @@ class Ascultator : virtual public Profil {
     std::vector<ContinutAudio*> istoricAscultari;
 
     public:
-    //destructor pur virtual
-    virtual ~Ascultator() = 0;
+    //destructor pur virtual; fara cuvantul cheie virtual deoarece primeam warning de redundanta
+    ~Ascultator() override = 0;
 
     void asculta(ContinutAudio* continut);
-    std::vector<ContinutAudio*> getIstoricAscultari() const;
+    const std::vector<ContinutAudio*>& getIstoricAscultari() const;
     void afiseazaIstoricAscultari() const;
 };
 

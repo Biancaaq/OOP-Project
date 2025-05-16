@@ -14,19 +14,19 @@ class Profil {
 
     public:
     //constructor
-    Profil(std::string nume = "", std::string email = "");
+    Profil(const std::string& nume = "", const std::string& email = "");
 
     //destructor pur virtual
     virtual ~Profil() = 0;
 
     //getteri
     int getId() const;
-    std::string getNume() const;
-    std::string getEmail() const;
+    const std::string& getNume() const;
+    const std::string& getEmail() const;
 
     //setteri
-    void setNume(std::string numeNou);
-    void setEmail(std::string emailNou);
+    void setNume(const std::string& numeNou);
+    void setEmail(const std::string& emailNou);
 
     void afiseazaProfil() const;
 };

@@ -13,15 +13,15 @@ class ContinutAudio {
 
     public:
     //constructor
-    ContinutAudio(int durata = 0, std::string titlu = "", std::string gen = "");
+    ContinutAudio(int durata = 0, const std::string& titlu = "", const std::string& gen = "");
 
     //destructor pur virtual
     virtual ~ContinutAudio() = 0;
 
     //getteri
     int getDurata() const;
-    std::string getTitlu() const;
-    std::string getGen() const;
+    const std::string& getTitlu() const;
+    const std::string& getGen() const;
 
     virtual void afiseazaInfo() const = 0;
 };

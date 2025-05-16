@@ -9,10 +9,10 @@
 class Utilizator : public CreatorContinut, public Ascultator {
     public:
     //constructor
-    Utilizator(std::string nume = "", std::string email = "");
+    explicit Utilizator(const std::string& nume = "", const std::string& email = "");
 
     //destructor
-    ~Utilizator();
+    ~Utilizator() override;
 };
 
 #endif

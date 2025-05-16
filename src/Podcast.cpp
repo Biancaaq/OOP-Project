@@ -4,17 +4,17 @@
 using namespace std;
 
 
-Podcast::Podcast(int durata, string titlu, string gen, int episod, string gazda, string descriere) : ContinutAudio(durata, titlu, gen), episod(episod), gazda(gazda), descriere(descriere) {}
+Podcast::Podcast(int durata, const string& titlu, const string& gen, int episod, const string& gazda, const string& descriere) : ContinutAudio(durata, titlu, gen), episod(episod), gazda(gazda), descriere(descriere) {}
 
 int Podcast::getEpisod() const {
     return episod;
 }
 
-string Podcast::getGazda() const {
+const string& Podcast::getGazda() const {
     return gazda;
 }
 
-string Podcast::getDescriere() const {
+const string& Podcast::getDescriere() const {
     return descriere;
 }
 

@@ -13,7 +13,7 @@ void CreatorContinut::adaugaContinut(ContinutAudio* continut) {
     }
 }
 
-vector<ContinutAudio*> CreatorContinut::getContinutCreat() const {
+const vector<ContinutAudio*>& CreatorContinut::getContinutCreat() const {
     return continutCreat;
 }
 

@@ -4,17 +4,17 @@
 using namespace std;
 
 
-Audiobook::Audiobook(int durata, string titlu, string gen, string autor, string narator, string titluCarte) : ContinutAudio(durata, titlu, gen), autor(autor), narator(narator), titluCarte(titluCarte) {}
+Audiobook::Audiobook(int durata, const string& titlu, const string& gen, const string& autor, const string& narator, const string& titluCarte) : ContinutAudio(durata, titlu, gen), autor(autor), narator(narator), titluCarte(titluCarte) {}
 
-string Audiobook::getAutor() const {
+const string& Audiobook::getAutor() const {
     return autor;
 }
 
-string Audiobook::getNarator() const {
+const string& Audiobook::getNarator() const {
     return narator;
 }
 
-string Audiobook::getTitluCarte() const {
+const string& Audiobook::getTitluCarte() const {
     return titluCarte;
 }
 

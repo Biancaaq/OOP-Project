@@ -13,12 +13,12 @@ class Audiobook : public ContinutAudio {
 
     public:
     //constructor
-    Audiobook(int durata = 0, std::string titlu = "", std::string gen = "", std::string autor = "", std::string narator = "", std::string titluCarte = "");
+    explicit Audiobook(int durata = 0, const std::string& titlu = "", const std::string& gen = "", const std::string& autor = "", const std::string& narator = "", const std::string& titluCarte = "");
 
     //getteri
-    std::string getAutor() const;
-    std::string getNarator() const;
-    std::string getTitluCarte() const;
+    const std::string& getAutor() const;
+    const std::string& getNarator() const;
+    const std::string& getTitluCarte() const;
 
     void afiseazaInfo() const override;
 };

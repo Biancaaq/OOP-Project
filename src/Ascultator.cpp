@@ -13,7 +13,7 @@ void Ascultator::asculta(ContinutAudio* continut) {
     }
 }
 
-vector<ContinutAudio*> Ascultator::getIstoricAscultari() const {
+const vector<ContinutAudio*>& Ascultator::getIstoricAscultari() const {
     return istoricAscultari;
 }
 
