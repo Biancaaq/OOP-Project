@@ -119,8 +119,8 @@ int main() {
         cout << u3->getId();
     }
 
-    //Aplicatie apl2;
-    apl.meniuPrincipal();
+    Aplicatie apl2;
+    apl2.meniuPrincipal();
 
 
 

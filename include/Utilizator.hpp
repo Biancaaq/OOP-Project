@@ -5,6 +5,9 @@
 #include <memory>
 #include "CreatorContinut.hpp"
 #include "Ascultator.hpp"
+#include "Melodie.hpp"
+#include "Podcast.hpp"
+#include "Audiobook.hpp"
 
 
 class Aplicatie;

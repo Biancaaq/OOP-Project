@@ -167,7 +167,8 @@ void Aplicatie::meniuUtilizator() {
         cout << "1. Rasfoieste" << endl;
         cout << "2. Continut personal" << endl;
         cout << "3. Playlist-uri" << endl;
-        cout << "4. Deconectare" << endl;
+        cout << "4. Favorite" << endl;
+        cout << "5. Deconectare" << endl;
         cout << endl;
         cout << "Selecteaza o optiune: ";
 
@@ -195,6 +196,46 @@ void Aplicatie::meniuUtilizator() {
             }
 
             case 4: {
+                while (true) {
+                    utilizatorAutentificat->afiseazaFavorite();
+
+                    cout << "Pentru a sterge continut de la favorite, introdu tipul (1 - melodie, 2 - podcast, 3 - audiobook) si indexul continutului." << endl;
+                    cout << "Pentru a te intoarce inapoi in meniul utilizatorului, apasa -1." << endl;
+                    cout << endl;
+                    cout << "Introdu tipul: ";
+
+                    int tip;
+                    cin >> tip;
+                    cin.ignore();
+
+                    if (tip == -1) {
+                        break;
+                    }
+
+                    if (tip < 1 || tip > 3) {
+                        cout << "Tip invalid. Te rog incearca din nou." << endl;
+
+                        continue;
+                    }
+
+                    cout << "Introdu indexul: ";
+                    int index;
+                    cin >> index;
+                    cin.ignore();
+
+                    if (index < 0) {
+                        cout << "Index invalid." << endl;
+
+                        continue;
+                    }
+
+                    utilizatorAutentificat->stergeFavorit(tip, static_cast<size_t>(index));
+                }
+
+                break;
+            }
+
+            case 5: {
                 deconectare();
 
                 return;
@@ -412,22 +453,26 @@ void Aplicatie::meniuRasfoire() {
         int tip, index;
         cin >> tip;
         cin.ignore();
-        cin >> index;
-        cin.ignore();
 
         if (tip == -1) {
             break;
         }
 
+        cin >> index;
+        cin.ignore();
+
         if (tip == 1 && index >= 0 && index < static_cast<int>(melodiiGlobale.size())) {
+            utilizatorAutentificat->adaugaMelodieFavorita(melodiiGlobale[index].get());
             cout << "Melodie adaugata la favorite." << endl;
         }
 
         else if (tip == 2 && index >= 0 && index < static_cast<int>(podcasturiGlobale.size())) {
+            utilizatorAutentificat->adaugaPodcastFavorit(podcasturiGlobale[index].get());
             cout << "Podcast adaugat la favorite." << endl;
         }
 
         else if (tip == 3 && index >= 0 && index < static_cast<int>(audiobookuriGlobale.size())) {
+            utilizatorAutentificat->adaugaAudiobookFavorit(audiobookuriGlobale[index].get());
             cout << "Audiobook adaugat la favorite." << endl;
         }
 
