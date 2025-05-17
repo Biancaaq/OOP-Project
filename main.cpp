@@ -118,6 +118,7 @@ int main() {
 
     //Aplicatie apl2;
     apl.meniuPrincipal();
+    apl.meniuUtilizator();
 
 
 

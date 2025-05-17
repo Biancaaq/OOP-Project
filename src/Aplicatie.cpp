@@ -107,16 +107,13 @@ void Aplicatie::meniuPrincipal() {
 
             case 2: {
                 string email;
-                cout << "Email: ";
+                cout << "Email:";
                 getline(cin, email);
                 cout << endl;
 
                 if (autentificare(email)) {
                     cout << "Autentificare reusita." << endl;
-
-                    while (utilizatorAutentificat != nullptr) {
-                        meniuUtilizator();
-                    }
+                    return;
                 }
 
                 else {
