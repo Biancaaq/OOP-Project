@@ -351,13 +351,7 @@ void Aplicatie::meniuContinut() {
                     break;
                 }
 
-                if (index < 0) {
-                    cout << "Index invalid. Mai incearca." << endl;
-
-                    break;
-                }
-
-                if (index > continutCreat.size()) {
+                if (index < 0 || static_cast<size_t>(index) >= continutCreat.size()) {
                     cout << "Index invalid. Mai incearca." << endl;
 
                     break;
