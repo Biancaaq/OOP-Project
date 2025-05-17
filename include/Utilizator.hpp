@@ -22,6 +22,7 @@ class Utilizator : public CreatorContinut, public Ascultator {
     void setAplicatie(Aplicatie* a);
 
     void adaugaContinut(std::shared_ptr<ContinutAudio> continut) override;
+    void stergeContinutCreat(size_t index) override;
 };
 
 #endif

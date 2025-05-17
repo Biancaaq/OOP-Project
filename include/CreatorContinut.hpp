@@ -19,6 +19,7 @@ class CreatorContinut : virtual public Profil {
     const std::vector<std::shared_ptr<ContinutAudio>>& getContinutCreat() const;
 
     virtual void adaugaContinut(std::shared_ptr<ContinutAudio> continut);
+    virtual void stergeContinutCreat(size_t index);
     void afiseazaContinutCreat() const;
 };
 

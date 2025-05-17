@@ -17,6 +17,12 @@ const vector<shared_ptr<ContinutAudio>>& CreatorContinut::getContinutCreat() con
     return continutCreat;
 }
 
+void CreatorContinut::stergeContinutCreat(size_t index) {
+    if (index < continutCreat.size()) {
+        continutCreat.erase(continutCreat.begin() + index);
+    }
+}
+
 void CreatorContinut::afiseazaContinutCreat() const {
     cout << nume << " a creat: " << endl;
 

@@ -32,3 +32,23 @@ void Utilizator::adaugaContinut(shared_ptr<ContinutAudio> continut) {
         }
     }
 }
+
+void Utilizator::stergeContinutCreat(size_t index) {
+    shared_ptr<ContinutAudio> continutSters = continutCreat[index];
+
+    CreatorContinut::stergeContinutCreat(index);
+
+    if (aplicatie) {
+        if (auto m = dynamic_pointer_cast<Melodie>(continutSters)) {
+            aplicatie->stergeMelodieGlobal(m);
+        }
+
+        else if (auto p = dynamic_pointer_cast<Podcast>(continutSters)) {
+            aplicatie->stergePodcastGlobal(p);
+        }
+
+        else if (auto a = dynamic_pointer_cast<Audiobook>(continutSters)) {
+            aplicatie->stergeAudiobookGlobal(a);
+        }
+    }
+}

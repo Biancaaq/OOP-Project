@@ -52,6 +52,37 @@ void Aplicatie::adaugaAudiobookGlobal(shared_ptr<Audiobook> a) {
 }
 
 
+void Aplicatie::stergeMelodieGlobal(const shared_ptr<Melodie>& m) {
+    for (auto i = melodiiGlobale.begin(); i != melodiiGlobale.end(); ++i) {
+        if (*i == m) {
+            melodiiGlobale.erase(i);
+
+            break;
+        }
+    }
+}
+
+void Aplicatie::stergePodcastGlobal(const shared_ptr<Podcast>& p) {
+    for (auto i = podcasturiGlobale.begin(); i != podcasturiGlobale.end(); ++i) {
+        if (*i == p) {
+            podcasturiGlobale.erase(i);
+
+            break;
+        }
+    }
+}
+
+void Aplicatie::stergeAudiobookGlobal(const shared_ptr<Audiobook>& a) {
+    for (auto i = audiobookuriGlobale.begin(); i != audiobookuriGlobale.end(); ++i) {
+        if (*i == a) {
+            audiobookuriGlobale.erase(i);
+
+            break;
+        }
+    }
+}
+
+
 const vector<shared_ptr<Melodie>>& Aplicatie::getMelodiiGlobale() const {
     return melodiiGlobale;
 }
@@ -202,6 +233,7 @@ void Aplicatie::meniuContinut() {
                 cout << "1. Melodie" << endl;
                 cout << "2. Podcast" << endl;
                 cout << "3. Audiobook" << endl;
+                cout << "4. Inapoi" << endl;
                 cout << "Selecteaza o optiune: ";
                 cout << endl;
 
@@ -209,32 +241,149 @@ void Aplicatie::meniuContinut() {
                 cin >> tip;
                 cin.ignore();
 
-                // shared_ptr<ContinutAudio> continutNou;
-                // int durata;
-                // string titlu, gen;
-                //
-                // if (tip == 1) {
-                //     int an;
-                //     string artist = utilizatorAutentificat->getNume();
-                //
-                //     cout << "Titlu: ";
-                //     getline(cin, titlu);
-                //     cout << "Gen: ";
-                //     getline(cin, gen);
-                //     cout << "Durata: ";
-                //     cin >> durata;
-                //     cin.ignore();
-                //     cout << "An lansare: ";
-                //     cin >> an;
-                //     cin.ignore();
-                //
-                //     continutNou = make_shared<Melodie>(durata, titlu, gen, an, artist);
-                // }
-                //
-                // else if (tip == 2) {
-                //     int episod;
-                //     string descriere, gazda = utilizatorAutentificat->getNume();
-                // }
+                shared_ptr<ContinutAudio> continutNou;
+                int durata;
+                string titlu, gen;
+
+                if (tip == 1) {
+                    int an;
+                    string artist = utilizatorAutentificat->getNume();
+
+                    cout << "Titlul melodiei: ";
+                    getline(cin, titlu);
+                    cout << "Genul melodiei: ";
+                    getline(cin, gen);
+                    cout << "Durata in secunde a melodiei: ";
+                    cin >> durata;
+                    cin.ignore();
+                    cout << "Anul lansarii melodiei: ";
+                    cin >> an;
+                    cin.ignore();
+
+                    continutNou = make_shared<Melodie>(durata, titlu, gen, an, artist);
+                }
+
+                else if (tip == 2) {
+                    int episod;
+                    string descriere, gazda = utilizatorAutentificat->getNume();
+
+                    cout << "Titlul podcastului: ";
+                    getline(cin, titlu);
+                    cout << "Genul podcastului: ";
+                    getline(cin, gen);
+                    cout << "Durata in secunde a podcastului: ";
+                    cin >> durata;
+                    cin.ignore();
+                    cout << "Episodul: ";
+                    cin >> episod;
+                    cin.ignore();
+                    cout << "Descrierea podcastului: ";
+                    getline(cin, descriere);
+
+                    continutNou = make_shared<Podcast>(durata, titlu, gen, episod, gazda, descriere);
+                }
+
+                else if (tip == 3) {
+                    string autor, titluCarte, narator = utilizatorAutentificat->getNume();
+
+                    cout << "Titlul audiobookului: ";
+                    getline(cin, titlu);
+                    cout << "Genul audiobookului: ";
+                    getline(cin, gen);
+                    cout << "Durata in secunde a audiobookului: ";
+                    cin >> durata;
+                    cin.ignore();
+                    cout << "Autorul cartii: ";
+                    getline(cin, autor);
+                    cout << "Titlul cartii: ";
+                    getline(cin, titluCarte);
+
+                    continutNou = make_shared<Audiobook>(durata, titlu, gen, autor, narator, titluCarte);
+                }
+
+                else if (tip == 4) {
+                    break;
+                }
+
+                else {
+                    cout << "Optiune invalida." << endl;
+
+                    break;
+                }
+
+                utilizatorAutentificat->adaugaContinut(continutNou);
+
+                cout << "Continut incarcat cu succes!" << endl;
+
+                break;
+            }
+
+            case 2: {
+                const auto& continutCreat = utilizatorAutentificat->getContinutCreat();
+
+                if (continutCreat.empty()) {
+                    cout << "Nu ai creat niciun continut pana acum." << endl;
+
+                    break;
+                }
+
+                cout << "Continutul creat:" << endl << endl;
+
+                for (size_t i = 0; i < continutCreat.size(); ++i) {
+                    cout << "[" << i << "] ";
+
+                    if (continutCreat[i]) {
+                        continutCreat[i]->afiseazaInfo();
+                    }
+
+                    cout << endl;
+                }
+
+                cout << "Selecteaza indexul continutului pe care doresti sa il stergi sau '-1' daca doresti sa anulezi stergerea: " << endl << endl;
+
+                int index;
+                cin >> index;
+                cin.ignore();
+
+                if (index == -1) {
+                    cout << "Stergerea a fost anulata." << endl;
+
+                    break;
+                }
+
+                if (index < 0) {
+                    cout << "Index invalid. Mai incearca." << endl;
+
+                    break;
+                }
+
+                if (index > continutCreat.size()) {
+                    cout << "Index invalid. Mai incearca." << endl;
+
+                    break;
+                }
+
+                utilizatorAutentificat->stergeContinutCreat(index);
+
+                cout << "Continutul a fost sters cu succes!" << endl;
+
+                break;
+            }
+
+            case 3: {
+                utilizatorAutentificat->afiseazaContinutCreat();
+
+                break;
+            }
+
+            case 4: {
+                return;
+            }
+
+            default: {
+                cout << "Optiune invalida. Incearca din nou" << endl;
+
+                break;
             }
         }
     }

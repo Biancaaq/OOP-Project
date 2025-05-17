@@ -28,6 +28,10 @@ class Aplicatie {
     const std::vector<std::shared_ptr<Podcast>>& getPodcasturiGlobale() const;
     const std::vector<std::shared_ptr<Audiobook>>& getAudiobookuriGlobale() const;
 
+    void stergeMelodieGlobal(const std::shared_ptr<Melodie>& m);
+    void stergePodcastGlobal(const std::shared_ptr<Podcast>& p);
+    void stergeAudiobookGlobal(const std::shared_ptr<Audiobook>& a);
+
     void inregistrareUtilizator(const std::string& nume, const std::string& email);
     bool autentificare(const std::string& email);
     void deconectare();
