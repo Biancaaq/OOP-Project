@@ -43,6 +43,7 @@ class Aplicatie {
     void meniuPrincipal();
     void meniuUtilizator();
     void meniuContinut();
+    void meniuRasfoire();
 };
 
 #endif

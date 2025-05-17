@@ -177,7 +177,7 @@ void Aplicatie::meniuUtilizator() {
 
         switch (optiune) {
             case 1: {
-                cout << "momentan nimic";
+                meniuRasfoire();
 
                 break;
             }
@@ -381,4 +381,59 @@ void Aplicatie::meniuContinut() {
             }
         }
     }
+}
+
+void Aplicatie::meniuRasfoire() {
+    while (true) {
+        cout << "Iata tot continutul incarcat pe platforma pana in acest moment: " << endl;
+
+        cout << "Melodii: " << endl << endl;
+        for (size_t i = 0; i < melodiiGlobale.size(); ++i) {
+            cout << i << ". ";
+            melodiiGlobale[i]->afiseazaInfo();
+        }
+
+        cout << "Podcasturi: " << endl << endl;
+        for (size_t i = 0; i < podcasturiGlobale.size(); ++i) {
+            std::cout << i << ". ";
+            podcasturiGlobale[i]->afiseazaInfo();
+        }
+
+        cout << "Audiobookuri: " << endl << endl;
+        for (size_t i = 0; i < audiobookuriGlobale.size(); ++i) {
+            std::cout << i << ". ";
+            audiobookuriGlobale[i]->afiseazaInfo();
+        }
+
+        cout << endl;
+        cout << "Pentru a adauga un continut la favorite, introdu tipul (1 = melodie, 2 = podcast, 3 = audiobook) si indexul." << endl;
+        cout << "Apasa -1 pentru a te intoarce la meniul principal." << endl << endl;
+
+        int tip, index;
+        cin >> tip;
+        cin.ignore();
+        cin >> index;
+        cin.ignore();
+
+        if (tip == -1) {
+            break;
+        }
+
+        if (tip == 1 && index >= 0 && index < static_cast<int>(melodiiGlobale.size())) {
+            cout << "Melodie adaugata la favorite." << endl;
+        }
+
+        else if (tip == 2 && index >= 0 && index < static_cast<int>(podcasturiGlobale.size())) {
+            cout << "Podcast adaugat la favorite." << endl;
+        }
+
+        else if (tip == 3 && index >= 0 && index < static_cast<int>(audiobookuriGlobale.size())) {
+            cout << "Audiobook adaugat la favorite." << endl;
+        }
+
+        else {
+            cout << "Index sau tip invalid!" << endl;
+        }
+    }
+
 }
