@@ -480,5 +480,4 @@ void Aplicatie::meniuRasfoire() {
             cout << "Index sau tip invalid!" << endl;
         }
     }
-
 }
