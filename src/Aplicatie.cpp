@@ -174,8 +174,10 @@ void Aplicatie::meniuUtilizator() {
                 return;
             }
 
-            default:
+            default: {
                 cout << "Optiune invalida. Mai incearca inca o data!" << endl;
+                break;
+            }
         }
     }
 }
