@@ -4,19 +4,7 @@
 using namespace std;
 
 
-Aplicatie::~Aplicatie() {
-    for (auto* m : melodiiGlobale) {
-        delete m;
-    }
-
-    for (auto* p : podcasturiGlobale) {
-        delete p;
-    }
-
-    for (auto* a : audiobookuriGlobale) {
-        delete a;
-    }
-}
+Aplicatie::~Aplicatie() = default;
 
 void Aplicatie::inregistrareUtilizator(const string& nume, const string& email) {
     utilizatori.push_back(std::make_unique<Utilizator>(nume, email));
@@ -51,28 +39,28 @@ Utilizator* Aplicatie::getUtilizatorAutentificat() {
 }
 
 
-void Aplicatie::adaugaMelodieGlobal(Melodie* m) {
+void Aplicatie::adaugaMelodieGlobal(shared_ptr<Melodie> m) {
     melodiiGlobale.push_back(m);
 }
 
-void Aplicatie::adaugaPodcastGlobal(Podcast* p) {
+void Aplicatie::adaugaPodcastGlobal(shared_ptr<Podcast> p) {
     podcasturiGlobale.push_back(p);
 }
 
-void Aplicatie::adaugaAudiobookGlobal(Audiobook* a) {
+void Aplicatie::adaugaAudiobookGlobal(shared_ptr<Audiobook> a) {
     audiobookuriGlobale.push_back(a);
 }
 
 
-const vector<Melodie*>& Aplicatie::getMelodiiGlobale() const {
+const vector<shared_ptr<Melodie>>& Aplicatie::getMelodiiGlobale() const {
     return melodiiGlobale;
 }
 
-const vector<Podcast*>& Aplicatie::getPodcasturiGlobale() const {
+const vector<std::shared_ptr<Podcast>>& Aplicatie::getPodcasturiGlobale() const {
     return podcasturiGlobale;
 }
 
-const vector<Audiobook*>& Aplicatie::getAudiobookuriGlobale() const {
+const vector<shared_ptr<Audiobook>>& Aplicatie::getAudiobookuriGlobale() const {
     return audiobookuriGlobale;
 }
 
@@ -150,7 +138,7 @@ void Aplicatie::meniuUtilizator() {
         cout << "3. Playlist-uri" << endl;
         cout << "4. Deconectare" << endl;
         cout << endl;
-        cout << "Selectati o optiune: ";
+        cout << "Selecteaza o optiune: ";
 
         int optiune;
         cin >> optiune;
@@ -164,7 +152,7 @@ void Aplicatie::meniuUtilizator() {
             }
 
             case 2: {
-                cout << "momentan nimic";
+                meniuContinut();
 
                 break;
             }
@@ -185,6 +173,68 @@ void Aplicatie::meniuUtilizator() {
                 cout << "Optiune invalida. Mai incearca inca o data!" << endl;
 
                 break;
+            }
+        }
+    }
+}
+
+void Aplicatie::meniuContinut() {
+    while (true) {
+        cout << "~~~ Continut Personal ~~~" << endl;
+        cout << endl;
+        cout << endl;
+        cout << "1. Incarca continut" << endl;
+        cout << "2. Sterge continut" << endl;
+        cout << "3. Vizualizeaza continutul creat" << endl;
+        cout << "4. Inapoi" << endl;
+        cout << endl;
+        cout << "Selecteaza o optiune: ";
+
+        int opt;
+        cin >> opt;
+        cin.ignore();
+
+        switch (opt) {
+            case 1: {
+                cout << "Ce tip de continut doresti sa adaugi?" << endl;
+                cout << endl;
+                cout << endl;
+                cout << "1. Melodie" << endl;
+                cout << "2. Podcast" << endl;
+                cout << "3. Audiobook" << endl;
+                cout << "Selecteaza o optiune: ";
+                cout << endl;
+
+                int tip;
+                cin >> tip;
+                cin.ignore();
+
+                // shared_ptr<ContinutAudio> continutNou;
+                // int durata;
+                // string titlu, gen;
+                //
+                // if (tip == 1) {
+                //     int an;
+                //     string artist = utilizatorAutentificat->getNume();
+                //
+                //     cout << "Titlu: ";
+                //     getline(cin, titlu);
+                //     cout << "Gen: ";
+                //     getline(cin, gen);
+                //     cout << "Durata: ";
+                //     cin >> durata;
+                //     cin.ignore();
+                //     cout << "An lansare: ";
+                //     cin >> an;
+                //     cin.ignore();
+                //
+                //     continutNou = make_shared<Melodie>(durata, titlu, gen, an, artist);
+                // }
+                //
+                // else if (tip == 2) {
+                //     int episod;
+                //     string descriere, gazda = utilizatorAutentificat->getNume();
+                // }
             }
         }
     }

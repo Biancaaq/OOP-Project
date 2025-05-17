@@ -1,8 +1,8 @@
 #ifndef UTILIZATOR_HPP
 #define UTILIZATOR_HPP
 
-#include <iostream>
 #include <string>
+#include <memory>
 #include "CreatorContinut.hpp"
 #include "Ascultator.hpp"
 
@@ -21,7 +21,7 @@ class Utilizator : public CreatorContinut, public Ascultator {
 
     void setAplicatie(Aplicatie* a);
 
-    void adaugaContinut(ContinutAudio* continut) override;
+    void adaugaContinut(std::shared_ptr<ContinutAudio> continut) override;
 };
 
 #endif

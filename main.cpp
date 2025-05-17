@@ -1,4 +1,5 @@
 #include <iostream>
+#include <memory>
 #include "Utilizator.hpp"
 #include "Melodie.hpp"
 #include "Podcast.hpp"
@@ -16,9 +17,9 @@ int main() {
         cout << u->getNume() << endl;
         cout << u->getId() << endl;
 
-        Melodie* m = new Melodie(210, "Still Alive", "Rock", 2023, u->getNume());
-        Podcast* p = new Podcast(1800, "Mind Architect", "Psihologie", 17, "Paul Olteanu", "Despre mindset");
-        Audiobook* a = new Audiobook(7200, "Micul Print", "Poveste", "Exupery", "Ion Caramitru", "Micul Print");
+        shared_ptr<Melodie> m = make_shared<Melodie>(210, "Still Alive", "Rock", 2023, u->getNume());
+        shared_ptr<Podcast> p = make_shared<Podcast>(1800, "Mind Architect", "Psihologie", 17, "Paul Olteanu", "Despre mindset");
+        shared_ptr<Audiobook> a = make_shared<Audiobook>(7200, "Micul Print", "Poveste", "Exupery", "Ion Caramitru", "Micul Print");
 
         cout << m->getTitlu() << endl;
         cout << m->getNumeArtist() << endl;
@@ -61,8 +62,8 @@ int main() {
         u->setEmail("Bianca@rock.com");
         u->afiseazaProfil();
 
-        vector<ContinutAudio*> istoric = u->getIstoricAscultari();
-        vector<ContinutAudio*> publicat = u->getContinutCreat();
+        vector<shared_ptr<ContinutAudio>> istoric = u->getIstoricAscultari();
+        vector<shared_ptr<ContinutAudio>> publicat = u->getContinutCreat();
 
         cout << "Numar ascultari: " << istoric.size() << endl;
         cout << "Numar continut creat: " << publicat.size() << endl;
@@ -75,25 +76,25 @@ int main() {
     if (apl.autentificare("ana@maria.com")) {
         Utilizator* u1 = apl.getUtilizatorAutentificat();
 
-        Melodie* m1 = new Melodie(100, "test", "Pop", 2020,"Ana");
+        shared_ptr<Melodie> m1 = make_shared<Melodie>(100, "test", "Pop", 2020,"Ana");
 
         u1->adaugaContinut(m1);
 
-        Podcast* p1 = new Podcast(3000, "Tech Talk", "Tehnologie", 1, "Ana", "Podcast despre AI");
+         shared_ptr<Podcast> p1 = make_shared<Podcast>(3000, "Tech Talk", "Tehnologie", 1, "Ana", "Podcast despre AI");
         u1->adaugaContinut(p1);
 
-        Audiobook* a1 = new Audiobook(7200, "1984", "Distopie", "George Orwell", "Ana", "1984");
+         shared_ptr<Audiobook> a1 = make_shared<Audiobook>(7200, "1984", "Distopie", "George Orwell", "Ana", "1984");
         u1->adaugaContinut(a1);
 
-        for (const auto* mel : apl.getMelodiiGlobale()) {
+        for (const auto& mel : apl.getMelodiiGlobale()) {
             mel->afiseazaInfo();
         }
 
-        for (const auto* pod : apl.getPodcasturiGlobale()) {
+        for (const auto& pod : apl.getPodcasturiGlobale()) {
             pod->afiseazaInfo();
         }
 
-        for (const auto* aud : apl.getAudiobookuriGlobale()) {
+        for (const auto& aud : apl.getAudiobookuriGlobale()) {
             aud->afiseazaInfo();
         }
 

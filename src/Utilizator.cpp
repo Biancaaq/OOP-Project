@@ -9,27 +9,25 @@ using namespace std;
 
 Utilizator::Utilizator(const string& nume, const string& email) : Profil(nume, email), CreatorContinut(), Ascultator() {}
 
-Utilizator::~Utilizator() {
-    continutCreat.clear();
-}
+Utilizator::~Utilizator() = default;
 
 void Utilizator::setAplicatie(Aplicatie* a) {
     aplicatie = a;
 }
 
-void Utilizator::adaugaContinut(ContinutAudio* continut) {
+void Utilizator::adaugaContinut(shared_ptr<ContinutAudio> continut) {
     CreatorContinut::adaugaContinut(continut);
 
     if (aplicatie) {
-        if (auto* m = dynamic_cast<Melodie*>(continut)) {
+        if (auto m = dynamic_pointer_cast<Melodie>(continut)) {
             aplicatie->adaugaMelodieGlobal(m);
         }
 
-        else if (auto* p = dynamic_cast<Podcast*>(continut)) {
+        else if (auto p = dynamic_pointer_cast<Podcast>(continut)) {
             aplicatie->adaugaPodcastGlobal(p);
         }
 
-        else if (auto* a = dynamic_cast<Audiobook*>(continut)) {
+        else if (auto a = dynamic_pointer_cast<Audiobook>(continut)) {
             aplicatie->adaugaAudiobookGlobal(a);
         }
     }

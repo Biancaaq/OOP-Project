@@ -2,6 +2,7 @@
 #define CREATORCONTINUT_HPP
 
 #include <vector>
+#include <memory>
 #include "Profil.hpp"
 
 
@@ -9,15 +10,15 @@ class ContinutAudio;
 
 class CreatorContinut : virtual public Profil {
     protected:
-    std::vector<ContinutAudio*> continutCreat;
+    std::vector<std::shared_ptr<ContinutAudio>> continutCreat;
 
     public:
     //destructor pur virtual; am scos cuvantul cheie virtual deoarece imi dadea warning ca este redundant
     ~CreatorContinut() override= 0;
 
-    const std::vector<ContinutAudio*>& getContinutCreat() const;
+    const std::vector<std::shared_ptr<ContinutAudio>>& getContinutCreat() const;
 
-    virtual void adaugaContinut(ContinutAudio* continut);
+    virtual void adaugaContinut(std::shared_ptr<ContinutAudio> continut);
     void afiseazaContinutCreat() const;
 };
 

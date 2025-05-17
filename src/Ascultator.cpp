@@ -1,4 +1,5 @@
 #include <iostream>
+#include <memory>
 #include "Ascultator.hpp"
 #include "ContinutAudio.hpp"
 
@@ -7,13 +8,13 @@ using namespace std;
 
 Ascultator::~Ascultator() {}
 
-void Ascultator::asculta(ContinutAudio* continut) {
+void Ascultator::asculta(shared_ptr<ContinutAudio> continut) {
     if (continut != nullptr) {
         istoricAscultari.push_back(continut);
     }
 }
 
-const vector<ContinutAudio*>& Ascultator::getIstoricAscultari() const {
+const vector<shared_ptr<ContinutAudio>>& Ascultator::getIstoricAscultari() const {
     return istoricAscultari;
 }
 
@@ -25,7 +26,7 @@ void Ascultator::afiseazaIstoricAscultari() const {
     }
 
     else {
-        for (const auto* c : istoricAscultari) {
+        for (const auto& c : istoricAscultari) {
             if (c) {
                 c->afiseazaInfo();
             }
