@@ -129,8 +129,11 @@ void Aplicatie::meniuPrincipal() {
                 return;
             }
 
-            default:
+            default: {
                 cout << "Optiune invalida. Incearca inca o data!" << endl;
+
+                break;
+            }
         }
     }
 }
@@ -156,26 +159,31 @@ void Aplicatie::meniuUtilizator() {
         switch (optiune) {
             case 1: {
                 cout << "momentan nimic";
+
                 break;
             }
 
             case 2: {
                 cout << "momentan nimic";
+
                 break;
             }
 
             case 3: {
                 cout << "momentan nimic";
+
                 break;
             }
 
             case 4: {
                 deconectare();
+
                 return;
             }
 
             default: {
                 cout << "Optiune invalida. Mai incearca inca o data!" << endl;
+                
                 break;
             }
         }
